@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <base href="./">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baixar Anti-vírus — Defensor Android</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== IMAGEM DO HERÓI ATIRANDO ===== */
+    .heroBox {
+      position: relative; /* permite posicionamento interno absoluto */
+      overflow: hidden;
+    }
+
+    .heroImagemAtirando {
+      position: absolute;
+      top: -10px;         /* sobe a imagem */
+      right: 50px;        /* ajusta distância da borda direita */
+      z-index: 0;         /* fica atrás do conteúdo */
+      pointer-events: none; /* impede interferência com cliques */
+      animation: pulse 2.5s infinite ease-in-out;
+      opacity: 0.9;       /* leve transparência */
+    }
+
+    .heroImagemAtirando img {
+      width: 180px;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 102, 255, 0.5));
+    }
+
+    /* Pulso suave */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* Ajuste para telas pequenas */
+    @media (max-width: 768px) {
+      .heroImagemAtirando {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto 0;
+      }
+
+      .heroImagemAtirando img {
+        width: 130px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="logo.png" alt="Logo do Projeto" class="logo" id="logoBtn">
+        <span>Defensor Android</span>
+      </div>
+      <div class="spacer"></div>
+
+      <nav class="menu" id="menu">
+        <a href="index.html#inicio">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="antivirus.html">Baixar Anti-vírus</a>
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+
+      <button class="hamb" aria-expanded="false" aria-controls="menu" id="btnMenu">Menu</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <div class="heroBox elevated">
+      <!-- IMAGEM NO TOPO DIREITO -->
+      <div class="heroImagemAtirando">
+        <img src="logo_atirando.png" alt="Defensor Android Atirando">
+      </div>
+
+      <h1>Escolha o melhor antivírus para o seu celular</h1>
+      <p>Selecionamos três antivírus confiáveis e bem avaliados disponíveis na Play Store.  
+      Escolha o que melhor se adapta às suas necessidades.</p>
+
+      <div class="ctaRow">
+        <a class="btn" href="index.html#inicio">Início</a>
+        <a class="btn" href="dicas.html">Ver Dicas</a>
+        <a class="btn" href="saibamais.html">Sobre o Projeto</a>
+      </div>
+    </div>
+
+    <!-- LISTA DE ANTIVÍRUS -->
+    <section class="section">
+      <div class="grid">
+
+        <!-- Norton -->
+        <article class="card elevated">
+          <div class="antivirus-header">
+            <img src="norton.png" alt="Norton logo" class="antivirus-logo">
+            <h3>Norton 360</h3>
+          </div>
+          <p>Antivírus completo, com VPN integrada, monitoramento de privacidade e detecção avançada de ameaças.</p><br><br>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.symantec.mobilesecurity&hl=pt_BR&gl=US" target="_blank">
+            Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Avast -->
+        <article class="card elevated">
+          <div class="antivirus-header">
+            <img src="avast.png" alt="Avast logo" class="antivirus-logo">
+            <h3>Avast Mobile Security</h3>
+          </div>
+          <p>Proteção gratuita e eficiente, com serviço de bloqueio de chamadas, antivírus e análise em tempo real.</p><br><br>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity&hl=pt_BR&gl=US" target="_blank">
+            Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Bitdefender -->
+        <article class="card elevated">
+          <div class="antivirus-header">
+            <img src="bitdefender.png" alt="Bitdefender logo" class="antivirus-logo">
+            <h3>Bitdefender Mobile Security</h3>
+          </div>
+          <p>Leve, rápido e altamente confiável. Excelente proteção com baixo impacto no desempenho do aparelho.</p><br><br>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.bitdefender.security&hl=pt_BR&gl=US" target="_blank">
+            Baixar na Play Store
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ALERTA -->
+    <section class="page">
+      <div class="pageBox elevated">
+        <h2>Por que usar antivírus?</h2>
+        <p>
+          Ter um antivírus instalado é essencial para evitar roubo de dados, invasões em aplicativos bancários e golpes cada vez mais sofisticados.
+          Além de proteger seu dispositivo contra ameaças, ele ajuda a manter sua privacidade e segurança no dia a dia.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <small>© 2025 Defensor Android</small>
+      <nav>
+        <a href="index.html#inicio">Início</a> · 
+        <a href="dicas.html">Dicas</a> · 
+        <a href="antivirus.html">Baixar Anti-vírus</a> · 
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById("btnMenu");
+    const menu = document.getElementById("menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      const open = menu.classList.contains("open");
+      btn.setAttribute("aria-expanded", open);
+    });
+
+    const logoBtn = document.getElementById("logoBtn");
+    logoBtn.style.cursor = "pointer";
+    logoBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+    });
+  </script>
+</body>
+</html>
