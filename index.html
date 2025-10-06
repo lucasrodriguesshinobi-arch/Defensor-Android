@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <base href="./">
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base Site — Preto & Azul Escuro</title>
+  <!-- Conexão com o CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+  <div class="wrap nav">
+    <div class="brand">
+      <!-- Logo agora serve de botão -->
+      <img src="logo.png" alt="Logo do Projeto" class="logo" id="logoBtn">
+      <span>Defensor Android</span>
+    </div>
+    <div class="spacer"></div>
+<nav class="menu" id="menu">
+  <a href="index.html#inicio">Início</a>
+  <a href="dicas.html">Dicas</a>
+  <a href="antivirus.html">Baixar Anti-virus</a>
+  <a href="saibamais.html">Sobre</a>
+</nav>
+
+
+    <button class="hamb" aria-expanded="false" aria-controls="menu" id="btnMenu">Menu</button>
+  </div>
+</header>
+
+
+ <main id="inicio" class="wrap">
+
+ <!-- HERO / APRESENTAÇÃO -->
+<section class="hero">
+  <div class="heroBox elevated">
+    <div class="heroTexto">
+      <h1>Bem-vindo ao Defensor Android</h1>
+      <p>
+        Este site tem como objetivo ensinar sobre segurança digital, especialmente no uso de aplicativos em dispositivos móveis.<br><br>
+      </p>
+      <div class="ctaRow">
+        <!-- Agora os botões redirecionam para as páginas corretas -->
+        <a class="btn" href="dicas.html">Ver dicas</a>
+        <a class="btn" href="saibamais.html">Conheça o projeto</a>
+      </div>
+    </div>
+
+    <div class="heroImagem">
+      <img src="logo_beleza.png" alt="Imagem de destaque do site" class="logoPulsante">
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- RESUMO -->
+  <section id="resumo" class="section">
+    <div class="pageBox elevated">
+      <h2>Resumo</h2>
+      <p>
+        O Defensor Android foi criado para conscientizar usuários sobre os riscos de segurança em celulares e como se proteger de ataques cibernéticos. 
+        Aqui você encontrará dicas práticas, recomendações de antivírus e informações sobre como manter seus aplicativos seguros.
+      </p>
+    </div>
+  </section>
+
+<!-- ALERTA COM IMAGEM ANIMADA E TEXTO -->
+<section id="perigo" class="section alerta">
+  <div class="alertaBox elevated">
+    <!-- Imagem da caveira com animação -->
+    <div class="alertaImagem">
+      <img src="celular_caveira.png" alt="Celular infectado por malware" class="caveiraAnimada" />
+    </div>
+
+    <!-- Texto de alerta -->
+    <div class="alertaTexto">
+      <h2>⚠️ Perigos de invasão em aplicativos bancários</h2>
+      <p>
+        Aplicativos de banco são alvos frequentes de criminosos digitais. 
+        Softwares maliciosos podem roubar senhas, interceptar mensagens e até assumir o controle do dispositivo. 
+        É essencial manter o celular atualizado, usar antivírus e evitar instalar aplicativos fora da loja oficial.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+</main>
+
+  
+<footer>
+  <div class="wrap foot">
+    <small>© 2025 Defensor Android</small>
+    <nav>
+      <a href="index.html#inicio">Início</a> ·
+      <a href="dicas.html">Dicas</a> ·
+      <a href="antivirus.html">Baixar Anti-virus</a> ·
+      <a href="saibamais.html">Sobre</a>
+    </nav>
+  </div>
+</footer>
+
+  
+
+  <!-- Script do menu responsivo -->
+
+<script>
+  // Menu responsivo
+  const btn = document.getElementById("btnMenu");
+  const menu = document.getElementById("menu");
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    const open = menu.classList.contains("open");
+    btn.setAttribute("aria-expanded", open);
+  });
+
+  // Alternância claro/escuro clicando na logo
+  const logoBtn = document.getElementById("logoBtn");
+  logoBtn.style.cursor = "pointer";
+  logoBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+  });
+</script>
+
+
+
