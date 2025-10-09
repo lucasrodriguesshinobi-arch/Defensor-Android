@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dicas de Segurança — Defensor Android</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Estilo das dicas ===== */
+    .dica {
+      margin-bottom: 20px;
+      border: 1px solid var(--blue-800);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 1.1em;
+    }
+
+    .dica button {
+      width: 100%;
+      text-align: left;
+      padding: 18px;
+      background: var(--blue-950);
+      color: var(--blue-100);
+      border: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .dica button:hover {
+      filter: brightness(1.15);
+    }
+
+    .dicaTexto {
+      display: none;
+      padding: 20px;
+      background: #000;
+      color: var(--blue-200);
+      border-top: 1px solid var(--blue-800);
+      line-height: 1.8em;
+      font-size: 1.05em;
+    }
+
+    .dica.open .dicaTexto {
+      display: block;
+    }
+
+    /* ===== Modo claro ===== */
+    body.light-mode .dica {
+      border: 1px solid var(--blue-700);
+    }
+
+    body.light-mode .dica button {
+      background: #f5f5f5;
+      color: var(--blue-900);
+    }
+
+    body.light-mode .dicaTexto {
+      background: #fff;
+      color: var(--blue-900);
+      border-top: 1px solid var(--blue-700);
+    }
+
+    /* destaque da palavra Importante */
+    .importante {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    /* ===== Conclusão fixa ===== */
+   .conclusao {
+  position: relative; /* permite posicionar a imagem dentro */
+  margin-top: 40px;
+  padding: 30px;
+  background: var(--blue-950);
+  color: var(--blue-100);
+  border-radius: 12px;
+  text-align: justify;
+  line-height: 1.8em;
+  font-size: 1.15em;
+  overflow: hidden;
+}
+
+/* imagem dentro da conclusão */
+.conclusao img {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 70px;  /* tamanho pequeno */
+  height: auto;
+  opacity: 0.9;
+}
+
+body.light-mode .conclusao {
+  background: #f2f2f2;
+  color: var(--blue-900);
+}
+
+
+    body.light-mode .conclusao {
+      background: #f2f2f2;
+      color: var(--blue-900);
+    }
+
+    /* ===== Ajuste geral ===== */
+    .heroBox h1 {
+      font-size: 2em;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<!-- Botão Voltar ao Topo -->
+<button id="btnTopo" title="Voltar ao topo">
+  <span class="setaTopo">↑</span>
+</button>
+
+<script>
+  const btnTopo = document.getElementById("btnTopo");
+
+  // Mostra o botão com animação suave
+  window.addEventListener("scroll", () => {
+    if (document.documentElement.scrollTop > 300) {
+      btnTopo.classList.add("show");
+    } else {
+      btnTopo.classList.remove("show");
+    }
+  });
+
+  // Ao clicar, rola suavemente até o topo
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="logo.png" alt="Logo do Projeto" class="logo" id="logoBtn">
+        <span>Defensor Android</span>
+      </div>
+      <div class="spacer"></div>
+      <nav class="menu" id="menu">
+        <a href="./index.html#inicio">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="antivirus.html">Baixar Anti-virus</a>
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+      <button class="hamb" aria-expanded="false" aria-controls="menu" id="btnMenu">Menu</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroBox elevated">
+        <h1>Dicas de Segurança</h1>
+        <p>Clique em uma dica para ver os detalhes. Clique novamente para fechar.</p>
+      </div>
+    </section>
+
+    <section class="section">
+
+      <div class="dica elevated">
+        <button>1. Não baixe aplicativos fora de sites oficiais</button>
+        <div class="dicaTexto">
+          Não baixe aplicativos fora de sites oficiais, como aplicativos enviados por mensagens ou disponíveis em sites da internet.<br><br>
+          <span class="importante">Importante:</span> Mesmo estando em sites confiáveis, como a Play Store, confira se o aplicativo é o verdadeiro. Pesquise o nome oficial e confira quem é o publicador.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>2. Confira as permissões dos aplicativos</button>
+        <div class="dicaTexto">
+          Confira as permissões que o aplicativo solicita e se pergunte se são realmente necessárias. Por exemplo, um jogo simples pedindo acesso à câmera pode ser suspeito.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>3. Tenha aplicativos de defesa no seu celular</button>
+        <div class="dicaTexto">
+          Instale um ou mais antivírus confiáveis para identificar vírus e tentativas de invasão.  
+          Veja as recomendações que disponibilizamos na aba <strong>"Baixar Antivírus"</strong>.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>4. Evite abrir arquivos e sites suspeitos</button>
+        <div class="dicaTexto">
+          Não abra arquivos ou acesse sites desconhecidos e  
+          também não aceite notificações de sites duvidosos.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>5. Use senhas fortes</button>
+        <div class="dicaTexto">
+          Utilize senhas com letras maiúsculas, minúsculas, números e símbolos.  
+          Evite combinações óbvias como “123456” ou “senha” que podem ser facilmente advinhadas.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>6. Não use a mesma senha em vários serviços</button>
+        <div class="dicaTexto">
+          Evite repetir senhas em diferentes aplicativos.  
+          Se uma senha for comprometida, o invasor poderá acessar tudo.
+        </div>
+      </div>
+
+    <div class="dica elevated">
+  <button>7. Não guarde senhas no celular</button>
+  <div class="dicaTexto">
+    Não anote senhas em arquivos dentro do celular. Se o aparelho for roubado ou invadido, elas podem ser facilmente encontradas.  
+    Anote-as em um local físico e seguro, não ande com elas anotadas em um papel na carteira ou bolsa, pois também podem ser facilmente roubados.<br><br>
+    <span class="importante">Importante:</span> Uma alternativa é usar um cofre de senhas confiável — mas proteja-o com uma senha especialmente forte.  
+    Uma boa recomendação gratuita e segura é o 
+    <a href="https://bitwarden.com" target="_blank" style="color:#4da6ff; text-decoration: underline;">Bitwarden</a>.
+  </div>
+</div>
+
+
+      <div class="dica elevated">
+        <button>8. Nunca passe senhas por telefone</button>
+        <div class="dicaTexto">
+          Nenhuma empresa legítima solicita senhas por telefone.<br><br>
+          <span class="importante">Importante:</span> Mesmo dados como nome, CPF e endereço devem ser informados com cautela.  
+          Verifique o número que ligou e, se necessário, contate a empresa por meios oficiais para confirmar se a mesma realmente esta tentando contato.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>9. Use verificação em duas etapas</button>
+        <div class="dicaTexto">
+          Ative a verificação em duas etapas nos seus e-mails e aplicativos bancários.  
+          Isso adiciona uma camada extra de segurança, se tornando mais uma barreira para possiveis invasores.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>10. Mantenha aplicativos e celular atualizados</button>
+        <div class="dicaTexto">
+          Mantenha aplicativos e o sistema operacional sempre atualizados, pois as empresas estão sempre aprimorando suas defesas contra ataques, e disponibilizam essas melhorias atraves de atualizações.<br><br>  
+          <span class="importante">Importante:</span> Atualize apenas por lojas oficiais como a Play Store.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>11. Evite redes Wi-Fi públicas</button>
+        <div class="dicaTexto">
+          Redes públicas são um dos meios mais usados para ataques, principalmente as sem senha, deixando seu aparelho vulneravel para ataques.  
+          Evite-as, principalmente para acessar bancos.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>12. Monitore suas transações bancárias</button>
+        <div class="dicaTexto">
+          Ative notificações de transações e verifique regularmente suas movimentações, muitos aplicativos bancarios hoje oferecem uma configuração de notificação.  
+          Assim você percebe qualquer atividade suspeita rapidamente e pode acionar o banco.
+        </div>
+      </div>
+
+      <div class="dica elevated">
+        <button>13. Desconfie de propagandas milagrosas</button>
+        <div class="dicaTexto">
+          Não confie em propagandas que prometem dinheiro fácil ou resultados milagrosos. Mesmos que pessoas famosas como influenciadores ou atores estejam nelas, hoje com a tecnologia atual, há diversas formas de usar a voz de uma celebirdade e distorcer o que ela diz<br><br>
+          <span class="importante">Importante:</span> Verifique a procedência, usando sites como o Reclame Aqui e canais oficiais das empresas e dos famosos que aparecerem antes de clicar em links.
+        </div>
+      </div>
+
+      <!-- Conclusão fora dos blocos -->
+<div class="conclusao elevated">
+  <img src="logo_beleza.png" alt="logo_beleza">
+  <strong>Conclusão:</strong><br><br>
+  Embora sejam muitas informações, é sempre melhor estar prevenido do que contar com a sorte.  
+  O Brasil é um dos países com mais tentativas de invasões digitais, principalmente em dispositivos móveis.  
+  Siga essas dicas e compartilhe com outras pessoas — informação é a nossa melhor defesa!
+</div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <small>© 2025 Defensor Android</small>
+      <nav>
+        <a href="./index.html#inicio">Início</a> · 
+        <a href="dicas.html">Dicas</a> · 
+        <a href="antivirus.html">Baixar Anti-virus</a> · 
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Menu responsivo
+    const btn = document.getElementById("btnMenu");
+    const menu = document.getElementById("menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      const open = menu.classList.contains("open");
+      btn.setAttribute("aria-expanded", open);
+    });
+
+    // Alternância claro/escuro
+    const logoBtn = document.getElementById("logoBtn");
+    logoBtn.style.cursor = "pointer";
+    logoBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+    });
+
+    // Expansão das dicas
+    document.querySelectorAll(".dica button").forEach(button => {
+      button.addEventListener("click", () => {
+        const dica = button.parentElement;
+        dica.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+
+<script>
+  (function(){
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") document.body.classList.add("light-mode");
+  })();
+
+  const logoBtn = document.getElementById("logoBtn");
+  if (logoBtn) {
+    logoBtn.addEventListener("click", () => {
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+  }
+</script>
+
+</html>
