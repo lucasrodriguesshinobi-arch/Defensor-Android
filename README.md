@@ -126,7 +126,7 @@ Lucas Rodrigues
 💼 Técnico de Suporte — Alterdata Software
 🎓 Estudante de Ciência da Computação
 📍 Projeto desenvolvido como Trabalho de Conclusão de Curso (TCC)
-📧 Contato: [seu-email@exemplo.com
+📧 Contato: lucasrl.dev@gmail.com
 ]
 📅 Ano: 2025
 
