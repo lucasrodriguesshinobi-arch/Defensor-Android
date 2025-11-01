@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <!-- Define o caminho base para recursos relativos -->
+  <base href="./">
+  
+  <!-- Configurações básicas do documento -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Defensor Android — Segurança Digital</title>
+
+
+  <!-- Link para o arquivo CSS principal -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* --- Hero: manter imagem ao lado do texto no desktop --- */
+    .heroBox{
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: nowrap;                /* impede quebrar para baixo */
+    }
+  
+    .heroTexto{
+      flex: 1 1 auto;
+      min-width: 0;                     /* evita estourar a linha */
+    }
+  
+    .heroImagem{
+      flex: 0 0 clamp(320px, 32vw, 420px); /* largura fixa/responsiva do bloco da imagem */
+    }
+  
+    .heroImagem .image-container{
+      max-width: 100%;
+      margin-left: auto;                /* “cola” a imagem à direita */
+    }
+  
+    /* No mobile pode quebrar normalmente */
+    @media (max-width: 980px){
+      .heroBox{ flex-wrap: wrap; }
+      .heroTexto, .heroImagem{ flex: 1 1 100%; }
+      .heroImagem .image-container{
+        max-width: 320px;
+        margin: 12px auto 0;
+      }
+    }
+
+    /* ====== HERO - layout lado a lado sem comprimir o texto ====== */
+.hero .heroBox{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* texto maior, imagem menor */
+  align-items: center;
+  gap: 32px;
+  padding: 32px 40px;                 /* respirando, como na 2ª imagem */
+}
+
+/* Texto ocupa bem o espaço e não gruda na borda */
+.hero .heroTexto{
+  max-width: 760px;                   /* conforto de leitura */
+  justify-self: start;
+}
+
+/* Imagem fixa à direita e centralizada verticalmente */
+.hero .heroImagem{
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .heroImagem .image-container{
+  width: 360px;                       /* ajuste de tamanho do mascote */
+  max-width: 100%;
+}
+
+.hero .heroImagem img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Evita que algo absoluto/efeitos empurrem o conteúdo */
+.hero .heroBox > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsivo: empilha abaixo de 980px, como já fazia */
+@media (max-width: 980px){
+  .hero .heroBox{
+    grid-template-columns: 1fr;
+    text-align: left;                 /* mantém alinhamento agradável */
+    gap: 24px;
+  }
+  .hero .heroImagem{
+    justify-self: center;
+  }
+  .hero .heroImagem .image-container{
+    width: 280px;
+  }
+}
+
+  </style>
+  
+</head>
+
+<body>
+  <!-- ===== CABEÇALHO FIXO ===== -->
+  <header>
+    <div class="wrap nav">
+      <!-- Logo e nome do projeto -->
+      <div class="brand">
+        <!-- Logo clicável que volta para o início -->
+        <img src="logo.png" alt="Logo do Projeto" class="logo" id="logoBtn">
+        <span>Defensor Android</span>
+      </div>
+      
+      <!-- Espaçador flexível para empurrar o menu para a direita -->
+      <div class="spacer"></div>
+      
+      <!-- Menu de navegação principal -->
+      <nav class="menu" id="menu">
+        <a href="index.html#inicio">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="antivirus.html">Baixar Anti-virus</a>
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+
+      <!-- Botão para alternar entre tema claro e escuro -->
+      <button class="theme-btn" id="themeBtn" title="Alternar tema">🌙</button>
+      
+      <!-- Botão do menu hambúrguer para dispositivos móveis -->
+      <button class="hamb" aria-expanded="false" aria-controls="menu" id="btnMenu">Menu</button>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main id="inicio" class="wrap">
+    <!-- Efeito de partículas de fundo -->
+    <div class="particles-bg" id="particles"></div>
+
+    <!-- ===== SEÇÃO HERO / APRESENTAÇÃO ===== -->
+    <section class="hero">
+      <div class="heroBox elevated">
+        <!-- Texto principal da apresentação -->
+        <div class="heroTexto">
+          <!-- Título principal da página -->
+          <h1 class="hero-title">Bem-vindo ao <span class="highlight">Defensor Android</span></h1>
+          
+          <!-- Descrição do objetivo do site -->
+          <p class="hero-description">
+            Este site tem como objetivo ensinar sobre <strong>segurança digital</strong>, especialmente no uso de aplicativos em dispositivos móveis.
+          </p>
+          
+          <!-- Estatísticas rápidas -->
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number">13</span>
+              <span class="stat-label">Dicas Essenciais</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5</span>
+              <span class="stat-label">Antivírus Recomendados</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Gratuito</span>
+            </div>
+          </div>
+          
+          <!-- Botões de ação (Call to Action) -->
+          <div class="ctaRow">
+            <a class="btn btn-primary" href="dicas.html">
+              <span>🛡️</span> Ver dicas
+            </a>
+            <a class="btn btn-secondary" href="saibamais.html">
+              <span>📖</span> Conheça o projeto
+            </a>
+          </div>
+        </div>
+
+        <!-- Imagem ilustrativa com animação -->
+        <div class="heroImagem">
+          <div class="image-container">
+            <img src="logo_beleza.png" alt="Imagem de destaque do site" class="logoPulsante">
+            <div class="glow-effect"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO RESUMO ===== -->
+    <section id="resumo" class="section">
+      <div class="pageBox elevated">
+        <!-- Título da seção -->
+        <h2>🎯 Por que a Segurança Digital é Importante?</h2>
+        
+        <!-- Texto explicativo sobre o propósito do site -->
+        <p>
+          O <strong>Defensor Android</strong> foi criado para conscientizar usuários sobre os riscos de segurança em celulares e como se proteger de ataques cibernéticos. 
+          Aqui você encontrará <em>dicas práticas</em>, recomendações de antivírus e informações sobre como manter seus aplicativos seguros.
+        </p>
+        
+        <!-- Cards de benefícios -->
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">🔒</div>
+            <h3>Proteção Total</h3>
+            <p>Aprenda a proteger seus dados pessoais e financeiros</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h3>Dicas Rápidas</h3>
+            <p>Soluções práticas que você pode aplicar imediatamente</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎓</div>
+            <h3>Educação</h3>
+            <p>Conteúdo educativo para toda a família</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE VÍDEOS EDUCATIVOS ===== -->
+    <section id="videos" class="section">
+      <div class="pageBox elevated">
+        <!-- Título da seção de vídeos -->
+        <h2 class="tituloVideos">Assista e Aprenda Mais sobre Segurança Digital</h2>
+        
+        <!-- Texto introdutório -->
+        <p class="textoIntro">
+          Confira abaixo três vídeos curtos que explicam os principais perigos enfrentados por usuários de celular 
+          e como se proteger de hackers e aplicativos maliciosos.
+        </p>
+        
+        <!-- Grade de vídeos -->
+        <div class="grid videosGrid">
+          <!-- Primeiro vídeo educativo -->
+          <div class="video-card fade-up">
+            <!-- Embed do YouTube -->
+            <iframe width="100%" height="215" 
+              src="https://www.youtube.com/embed/s7VD5ijNIgY" 
+              title="HACKERS invadem SEU CELULAR por esses 3 MOTIVOS"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <!-- Descrição do vídeo -->
+            <p><strong>HACKERS invadem SEU CELULAR por esses 3 MOTIVOS</strong><br>
+            Entenda os principais motivos que levam à invasão de celulares e veja como se proteger.</p>
+          </div>
+
+          <!-- Segundo vídeo educativo -->
+          <div class="video-card fade-up">
+            <!-- Embed do YouTube -->
+            <iframe width="100%" height="215" 
+              src="https://www.youtube.com/embed/Tl5BiZLQaYA" 
+              title="Aplicativos Falsos na Play Store Podem Infectar COM VÍRUS"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <!-- Descrição do vídeo -->
+            <p><strong>Aplicativos Falsos na Play Store Podem Infectar com Vírus</strong><br>
+            Entenda como aplicativos falsos podem se passar por legítimos e comprometer seu dispositivo.</p>
+          </div>
+
+          <!-- Terceiro vídeo educativo -->
+          <div class="video-card fade-up">
+            <!-- Embed do YouTube -->
+            <iframe width="100%" height="215" 
+              src="https://www.youtube.com/embed/DsIgSZN3mSQ" 
+              title="Hackers do bem dão preciosas dicas para se proteger de invasão"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <!-- Descrição do vídeo -->
+            <p><strong>'Hackers do bem' dão preciosas dicas para se proteger</strong><br>
+            Programa jornalístico mostrando como especialistas ajudam usuários a evitar invasões.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE ALERTA SOBRE PERIGOS ===== -->
+    <section id="perigo" class="section alerta">
+      <div class="alertaBox elevated">
+        <!-- Imagem ilustrativa com animação -->
+        <div class="alertaImagem">
+          <img src="celular_caveira.png" alt="Celular infectado por malware" class="caveiraAnimada" />
+        </div>
+
+        <!-- Texto de alerta sobre segurança -->
+        <div class="alertaTexto">
+          <!-- Título do alerta -->
+          <h2>⚠️ Atenção: Perigos Reais em Aplicativos Bancários</h2>
+          
+          <!-- Texto explicativo sobre os riscos -->
+          <p>
+            <strong>Aplicativos de banco são alvos frequentes</strong> de criminosos digitais. 
+            Softwares maliciosos podem <em>roubar senhas</em>, <em>interceptar mensagens</em> e até <em>assumir o controle do dispositivo</em>.
+          </p>
+          
+          <div class="alert-actions">
+            <div class="alert-tip">
+              <span class="tip-icon">💡</span>
+              <span>Mantenha sempre seu celular atualizado e use antivírus confiáveis</span>
+            </div>
+            <a href="dicas.html" class="alert-btn">
+              Ver todas as dicas de segurança →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <div class="wrap foot">
+      <!-- Copyright -->
+      <small>© 2025 Defensor Android</small>
+      
+      <!-- Menu de navegação do rodapé -->
+      <nav>
+        <a href="index.html#inicio">Início</a> ·
+        <a href="dicas.html">Dicas</a> ·
+        <a href="antivirus.html">Baixar Anti-virus</a> ·
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS JAVASCRIPT ===== -->
+  
+  <!-- Script para efeito de partículas -->
+  <script>
+    // ===== EFEITO DE PARTÍCULAS DE FUNDO =====
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+          position: absolute;
+          width: ${Math.random() * 4 + 1}px;
+          height: ${Math.random() * 4 + 1}px;
+          background: rgba(0, 212, 255, ${Math.random() * 0.5 + 0.1});
+          border-radius: 50%;
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          animation: float ${Math.random() * 20 + 10}s linear infinite;
+          animation-delay: ${Math.random() * 5}s;
+        `;
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Adiciona animação CSS para as partículas
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Cria as partículas quando a página carrega
+    document.addEventListener('DOMContentLoaded', createParticles);
+  </script>
+  
+  <!-- Script para animações de entrada -->
+  <script>
+    // ===== ANIMAÇÕES DE ENTRADA =====
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.benefit-card, .stat-item, .pageBox');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+      });
+    }
+    
+    document.addEventListener('DOMContentLoaded', animateOnScroll);
+  </script>
+  
+  <!-- Script para menu responsivo -->
+  <script>
+    // ===== MENU RESPONSIVO =====
+    const btn = document.getElementById("btnMenu");   // Botão hambúrguer
+    const menu = document.getElementById("menu");     // Menu de navegação
+    
+    // Adiciona evento de clique no botão hambúrguer
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("open");                 // Alterna classe 'open'
+      const open = menu.classList.contains("open");   // Verifica se está aberto
+      btn.setAttribute("aria-expanded", open);        // Atualiza atributo de acessibilidade
+    });
+  </script>
+
+  <!-- Script para animação dos vídeos -->
+  <script>
+    // ===== ANIMAÇÃO DE ENTRADA DOS VÍDEOS =====
+    // Detecta quando os vídeos entram na tela e adiciona animação
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeElements = document.querySelectorAll('.fade-up'); // Seleciona elementos com animação
+
+      // Cria observer para detectar quando elementos entram na tela
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {                    // Se elemento está visível
+            entry.target.classList.add('visible');      // Adiciona classe para animação
+          }
+        });
+      }, { threshold: 0.2 }); // Ativa quando 20% do elemento está visível
+
+      // Observa todos os elementos com animação
+      fadeElements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <!-- Script principal de funcionalidades -->
+  <script>
+    // ===== NAVEGAÇÃO DA LOGO =====
+    const logoBtn = document.getElementById("logoBtn"); // Logo clicável
+    if (logoBtn) {
+      logoBtn.style.cursor = "pointer";                 // Define cursor como pointer
+      
+      // Adiciona evento de clique na logo para voltar ao início
+      logoBtn.addEventListener("click", () => {
+        window.location.href = "index.html#inicio";     // Redireciona para página inicial
+      });
+    }
+    
+    // ===== EFEITOS VISUAIS INTERATIVOS =====
+    // Efeito de hover nos cards de benefícios
+    document.querySelectorAll('.benefit-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+    
+    // Efeito parallax suave no hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroBox = document.querySelector('.heroBox');
+      if (heroBox) {
+        heroBox.style.transform = `translateY(${scrolled * 0.1}px)`;
+      }
+    });
+
+    // ===== SISTEMA DE TEMA CLARO/ESCURO =====
+    const themeBtn = document.getElementById("themeBtn"); // Botão de tema
+    if (themeBtn) {
+      // Função para atualizar o ícone do botão baseado no tema atual
+      const updateThemeIcon = () => {
+        const isLight = document.body.classList.contains("light-mode"); // Verifica tema atual
+        themeBtn.textContent = isLight ? "☀️" : "🌙";                    // Atualiza ícone
+      };
+      
+      // Atualiza o ícone ao carregar a página (com pequeno delay)
+      setTimeout(updateThemeIcon, 10);
+      
+      // Adiciona evento de clique no botão de tema
+      themeBtn.addEventListener("click", () => {
+        const isLight = document.body.classList.toggle("light-mode"); // Alterna tema
+        const themeValue = isLight ? "light" : "dark";               // Define valor do tema
+        localStorage.setItem("theme", themeValue);                   // Salva preferência
+        console.log("Tema salvo como:", themeValue);                 // Debug
+        updateThemeIcon();                                            // Atualiza ícone
+        
+        // Efeito visual na troca de tema
+        document.body.style.transition = 'all 0.5s ease';
+        setTimeout(() => {
+          document.body.style.transition = '';
+        }, 500);
+      });
+    }
+  </script>
+
+  <!-- Script para aplicar tema salvo -->
+  <script>
+    // ===== APLICAÇÃO DO TEMA SALVO =====
+    // Função auto-executável que aplica o tema salvo no localStorage
+    (function() {
+      const savedTheme = localStorage.getItem("theme"); // Recupera tema salvo
+      console.log("Tema salvo:", savedTheme);           // Debug
+      if (savedTheme === "light") {                     // Se for modo claro
+        document.body.classList.add("light-mode");      // Aplica classe do modo claro
+        console.log("Aplicando modo claro");            // Debug
+      }
+    })();
+  </script>
+
+</body>
+</html>
