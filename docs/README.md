@@ -100,7 +100,7 @@ Em Deploy from branch, selecione:
 
 Branch: main
 
-Folder: / (docs.)
+Folder: / (docs)
 
 Clique em Save.
 
