@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <!-- Configurações básicas do documento -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baixar Anti-vírus — Defensor Android</title>
+
+   <!-- Tipografia (Google Fonts) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap">
+
+  <!-- Link para o arquivo CSS principal -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== ESTILOS ESPECÍFICOS DA PÁGINA DE ANTIVÍRUS ===== */
+    
+    /* Lista de benefícios */
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-item:hover {
+      transform: translateX(8px);
+      background: rgba(0,212,255,0.15);
+      border-color: rgba(0,212,255,0.4);
+    }
+    
+    .benefit-item .benefit-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    body.light-mode .benefit-item {
+      background: rgba(20,58,119,0.1);
+      border-color: rgba(20,58,119,0.2);
+    }
+    
+    body.light-mode .benefit-item:hover {
+      background: rgba(20,58,119,0.15);
+      border-color: rgba(20,58,119,0.3);
+    }
+    
+    /* Container principal do hero com posicionamento relativo */
+    .heroBox {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Título da página com gradiente */
+    .heroBox h1 {
+      background: linear-gradient(135deg, var(--blue-100) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 16px;
+    }
+    
+    body.light-mode .heroBox h1 {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-600) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Imagem animada do mascote atirando */
+    .heroImagemAtirando {
+      position: absolute;
+      top: -10px;
+      right: 50px;
+      z-index: -1;
+      pointer-events: none;
+      animation: heroFloat 3s infinite ease-in-out;
+      opacity: 0.9;
+    }
+    
+    @keyframes heroFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 5px 15px rgba(0,212,255,0.3));
+      }
+      25% {
+        transform: translateY(-8px) rotate(2deg) scale(1.02);
+        filter: drop-shadow(0 8px 20px rgba(0,212,255,0.4));
+      }
+      50% {
+        transform: translateY(-5px) rotate(0deg) scale(1.01);
+        filter: drop-shadow(0 10px 25px rgba(0,212,255,0.5));
+      }
+      75% {
+        transform: translateY(-8px) rotate(-2deg) scale(1.02);
+        filter: drop-shadow(0 8px 20px rgba(0,212,255,0.4));
+      }
+    }
+
+    /* Estilo da imagem dentro do container */
+    .heroImagemAtirando img {
+      width: 200px;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,212,255,0.4));
+      transition: all 0.3s ease;
+    }
+    
+    .heroImagemAtirando:hover img {
+      filter: drop-shadow(0 12px 30px rgba(0,212,255,0.6));
+      transform: scale(1.05);
+    }
+
+    /* Melhorias nos botões CTA */
+    .ctaRow .btn {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--blue-500) 100%);
+      border: 2px solid transparent;
+      padding: 14px 24px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ctaRow .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .ctaRow .btn:hover::before {
+      left: 100%;
+    }
+    
+    .ctaRow .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0,212,255,0.4);
+      border-color: rgba(255,255,255,0.3);
+    }
+    
+    body.light-mode .ctaRow .btn {
+      background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-600) 100%);
+    }
+
+    /* Melhorias nos cards de antivírus */
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .card:hover::after {
+      opacity: 1;
+    }
+    
+    .card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,212,255,0.25);
+    }
+    
+    .card .btn {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--blue-500) 100%);
+      margin-top: auto;
+      width: 100%;
+      justify-content: center;
+      align-self: flex-end;
+    }
+    
+    .card {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card p {
+      flex-grow: 1;
+    }
+    
+    .card .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,212,255,0.4);
+    }
+    
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+      .heroImagemAtirando {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto 0;
+        animation: none;
+      }
+
+      .heroImagemAtirando img {
+        width: 150px;
+      }
+      
+      .heroBox h1 {
+        font-size: clamp(24px, 6vw, 32px);
+        text-align: center;
+      }
+      
+      .heroBox p {
+        text-align: center;
+      }
+      
+      .ctaRow {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* ===== Centralização garantida só na página de antivírus ===== */
+.antivirus-hero {
+  /* zera qualquer grid/flex herdado e centraliza */
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* evita “sobras” laterais no mobile */
+  margin: 0 auto;
+  padding: 24px 16px;
+  max-width: 100%;
+}
+
+/* garante que título/descrição não “puxem” para a esquerda */
+.antivirus-hero h1,
+.antivirus-hero p,
+.antivirus-hero .ctaRow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* botões sempre centralizados */
+.antivirus-hero .ctaRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* no mobile, neutraliza qualquer layout de duas colunas herdado */
+@media (max-width: 768px) {
+  .antivirus-hero {
+    padding: 20px 12px;
+  }
+  .antivirus-hero h1 { text-align: center !important; }
+  .antivirus-hero p  { text-align: center !important; }
+}
+
+/* A imagem do mascote já fica “fora do fluxo”.
+   Só garantimos que ela não empurre nada no mobile. */
+@media (max-width: 768px) {
+  .heroImagemAtirando {
+    position: static !important;
+    display: flex;
+    justify-content: center;
+    margin: 16px auto 0;
+    animation: none;
+  }
+  .heroImagemAtirando img { width: 150px; height: auto; }
+}
+
+/* ===== MASCOTE NO FINAL ===== */
+.mascoteFinal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.mascoteContainer {
+  position: relative;
+  text-align: center;
+}
+
+.mascoteAnimado {
+  width: 200px;
+  height: auto;
+  animation: flutuarMascote 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(0, 212, 255, 0.4));
+}
+
+/* Animação suave de flutuação */
+@keyframes flutuarMascote {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .mascoteAnimado {
+    width: 150px;
+  }
+}
+
+
+
+  </style>
+</head>
+
+<body>
+  <!-- ===== CABEÇALHO FIXO ===== -->
+  <header>
+    <div class="wrap nav">
+      <!-- Logo e nome do projeto -->
+      <div class="brand">
+        <img src="logo.png" alt="Logo do Projeto" class="logo" id="logoBtn">
+        <span>Defensor Android</span>
+      </div>
+      
+      <!-- Espaçador flexível -->
+      <div class="spacer"></div>
+
+      <!-- Menu de navegação principal -->
+      <nav class="menu" id="menu">
+        <a href="index.html#inicio">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="antivirus.html">Baixar Anti-vírus</a>
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+
+      <!-- Botão para alternar tema claro/escuro -->
+      <button class="theme-btn" id="themeBtn" title="Alternar tema">🌙</button>
+      
+      <!-- Botão do menu hambúrguer para mobile -->
+      <button class="hamb" aria-expanded="false" aria-controls="menu" id="btnMenu">Menu</button>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="wrap">
+
+    <!-- Seção hero com apresentação da página -->
+    <div class="heroBox elevated antivirus-hero">
+    
+
+      <!-- Título principal da página -->
+      <h1>🔒 Escolha o melhor antivírus para o seu celular</h1>
+      
+      <!-- Descrição explicativa -->
+      <p>Selecionamos <strong>antivírus confiáveis</strong> e bem avaliados disponíveis na Play Store. Escolha o que melhor se adapta às suas necessidades e <em>proteja seu dispositivo</em> contra ameaças digitais.</p>
+
+      <!-- Botões de navegação rápida -->
+      <div class="ctaRow">
+        <a class="btn" href="index.html#inicio">
+          <span>🏠</span> Início
+        </a>
+        <a class="btn" href="dicas.html">
+          <span>🛡️</span> Ver Dicas
+        </a>
+        <a class="btn" href="saibamais.html">
+          <span>📖</span> Sobre o Projeto
+        </a>
+      </div>
+    </div>
+
+    <!-- ===== LISTA DE ANTIVÍRUS RECOMENDADOS ===== -->
+    <section class="section">
+      <div class="grid">
+
+        <!-- Card do Norton 360 -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="norton.png" alt="Norton logo" class="antivirus-logo">
+            <h3>Norton 360</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Antivírus completo, com VPN integrada, monitoramento de privacidade e detecção avançada de ameaças.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.symantec.mobilesecurity&hl=pt_BR&gl=US" target="_blank">
+            <span>📲</span> Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Card do Avast Mobile Security -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="avast.png" alt="Avast logo" class="antivirus-logo">
+            <h3>Avast Mobile Security</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Proteção gratuita e eficiente, com bloqueio de chamadas e análise em tempo real.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity&hl=pt_BR&gl=US" target="_blank">
+            <span>📲</span> Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Card do Bitdefender Mobile Security -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="bitdefender.png" alt="Bitdefender logo" class="antivirus-logo">
+            <h3>Bitdefender Mobile Security</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Leve, rápido e confiável. Proteção avançada com baixo consumo de bateria e desempenho otimizado.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.bitdefender.security&hl=pt_BR&gl=US" target="_blank">
+            <span>📲</span> Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Card do AVG Antivirus & Security -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="avg.png" alt="AVG logo" class="antivirus-logo">
+            <h3>AVG Antivirus & Security</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Oferece proteção contra vírus, malware, phishing e roubo de dados, com limpeza de cache e otimização do celular.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.antivirus&hl=pt_BR&gl=US" target="_blank">
+            <span>📲</span> Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Card do McAfee Security -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="mcafee.png" alt="McAfee logo" class="antivirus-logo">
+            <h3>McAfee Security</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Antivírus com monitoramento de Wi-Fi, VPN e verificação de aplicativos para proteger suas informações em tempo real.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.wsandroid.suite&hl=pt_BR&gl=US" target="_blank">
+            <span>📲</span> Baixar na Play Store
+          </a>
+        </article>
+
+        <!-- Card do Kaspersky Mobile Security -->
+        <article class="card elevated">
+          <!-- Cabeçalho com logo e nome -->
+          <div class="antivirus-header">
+            <img src="kaspersky.png" alt="Kaspersky logo" class="antivirus-logo">
+            <h3>Kaspersky Mobile Security</h3>
+          </div>
+          
+          <!-- Descrição das funcionalidades -->
+          <p>Reconhecido pela alta taxa de detecção e proteção em tempo real. Inclui antivírus, antiphishing, bloqueio de apps e segurança na navegação.</p><br>
+          
+          <!-- Link direto para a Play Store -->
+          <a class="btn" href="https://www.kaspersky.com.br/mobile-security?utm_source=chatgpt.com" target="_blank">
+            <span>📲</span> Baixar no site oficial
+          </a>
+        </article>
+
+
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO INFORMATIVA ===== -->
+    <section class="page">
+      <div class="pageBox elevated">
+        <!-- Título da seção explicativa -->
+        <h2>🎯 Por que usar antivírus?</h2>
+        
+        <!-- Texto explicativo sobre a importância dos antivírus -->
+        <p>
+          Ter um <strong>antivírus instalado é essencial</strong> para evitar roubo de dados, invasões em aplicativos bancários e golpes cada vez mais sofisticados.
+          Além de proteger seu dispositivo contra ameaças, ele ajuda a manter sua <em>privacidade e segurança</em> no dia a dia.
+        </p>
+        
+        <!-- Benefícios dos antivírus -->
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">🔒</span>
+            <span>Proteção contra malware e vírus</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">📱</span>
+            <span>Monitoramento de aplicativos suspeitos</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🌐</span>
+            <span>Navegação segura na internet</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">📊</span>
+            <span>Otimização do desempenho do celular</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MASCOTE NO FINAL DA PÁGINA ===== -->
+      <section class="mascoteFinal section">
+        <div class="mascoteContainer">
+          <img src="logo_atirando.png" alt="Defensor Android Atirando" class="mascoteAnimado">
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <div class="wrap foot">
+      <!-- Copyright -->
+      <small>© 2025 Defensor Android</small>
+      
+      <!-- Menu de navegação do rodapé -->
+      <nav>
+        <a href="index.html#inicio">Início</a> · 
+        <a href="dicas.html">Dicas</a> · 
+        <a href="antivirus.html">Baixar Anti-vírus</a> · 
+        <a href="saibamais.html">Sobre</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT PRINCIPAL ===== -->
+  <script src="tema.js"></script>
+</body>
+</html>
